@@ -46,8 +46,8 @@ public class Storage {
      * @throws FileNotFoundException when input file cannot be found.
      * @throws IOException           when fails to create new file
      */
-    public List<Task> load() throws FileNotFoundException, IOException {
-        List<Task> taskList = new ArrayList<>();
+    public ArrayList<Task> load() throws FileNotFoundException, IOException {
+        ArrayList<Task> taskList = new ArrayList<>();
 
         if (!this.directory.exists()) {
             this.directory.mkdir();

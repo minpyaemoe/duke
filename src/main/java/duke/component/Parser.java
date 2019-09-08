@@ -8,6 +8,9 @@ import duke.command.DoneCommand;
 import duke.command.AddCommand;
 import duke.command.Command;
 
+import duke.exception.DukeException;
+import duke.exception.InvalidCommandException;
+import duke.exception.NotEnoughArgumentException;
 import duke.task.Deadline;
 import duke.task.Event;
 import duke.task.Todo;
@@ -116,9 +119,9 @@ public class Parser {
 
             if (inputs.length < 2) {
                 if (inputType.equals("deadline")) {
-                    throw new DukeException("The description of a deadline cannot be empty.");
+                    throw new NotEnoughArgumentException("The description of a deadline cannot be empty.");
                 } else {
-                    throw new DukeException("The description of an event cannot be empty.");
+                    throw new NotEnoughArgumentException("The description of an event cannot be empty.");
                 }
             }
 
@@ -126,9 +129,9 @@ public class Parser {
 
             if (inputs[1].equals("")) {
                 if (inputType.equals("deadline")) {
-                    throw new DukeException("The end time of a deadline cannot be empty.");
+                    throw new NotEnoughArgumentException("The end time of a deadline cannot be empty.");
                 } else {
-                    throw new DukeException("The time of an event cannot be empty.");
+                    throw new NotEnoughArgumentException("The time of an event cannot be empty.");
                 }
             }
 
@@ -148,7 +151,7 @@ public class Parser {
             return new AddCommand(newTask);
         } else if (inputs[0].equals("delete")) {
             if (inputs.length < 2) {
-                throw new DukeException("The task Number cannot be empty.");
+                throw new NotEnoughArgumentException("The task Number cannot be empty.");
             }
 
             int index = Integer.parseInt(inputs[1]) - 1;
@@ -156,12 +159,11 @@ public class Parser {
             return new DeleteCommand(index);
         } else if (inputs[0].equals("find")) {
             if (inputs.length < 2) {
-                throw new DukeException("The keyword cannot be empty.");
+                throw new NotEnoughArgumentException("The keyword cannot be empty.");
             }
-
             return new FindCommand(inputs[1]);
         } else {
-            throw new DukeException("I'm sorry, but I don't know what that means :-(");
+            throw new InvalidCommandException("I'm sorry, but I don't know what that means :-(");
         }
     }
 }

@@ -1,15 +1,15 @@
-package duke.component;
+package duke.exception;
 
 /**
  * Exception Class for Duke error.
  */
-public class DukeException extends Exception {
+public class InvalidCommandException extends DukeException {
 
     /**
-     * Constructor for DukeException Object.
+     * Constructor for InvalidCommandException Object.
      * @param message Message of the error.
      */
-    public DukeException(String message) {
+    public InvalidCommandException(String message) {
         super(message);
     }
 

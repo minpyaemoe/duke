@@ -6,6 +6,8 @@ import duke.component.TaskList;
 import duke.component.Ui;
 import duke.task.Task;
 
+import java.util.List;
+
 /**
  * Command Class for looking for match cases in the task list.
  */
@@ -26,10 +28,11 @@ public class FindCommand extends Command {
      * @param taskList list of tasks.
      * @param storage storage to store inside hard disk.
      * @param ui ui for user interaction.
+     * @param historicalTaskLists storage for previous version of Task List for undo
      * @return boolean indication of successful or unsuccessful running of command.
      */
     @Override
-    public String executeCommand(TaskList taskList, Storage storage, Ui ui) {
+    public String executeCommand(TaskList taskList, Storage storage, Ui ui, List<TaskList> historicalTaskLists) {
         TaskList tempTaskList = new TaskList();
 
         assert (!keyword.equals("")) : "Search keyword should not be an empty string.";
