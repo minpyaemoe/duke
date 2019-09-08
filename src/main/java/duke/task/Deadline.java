@@ -21,8 +21,8 @@ public class Deadline extends Task {
      * @param description the description of the task.
      * @param deadLine the deadline in date and time format.
      */
-    public Deadline(String description, LocalDateTime deadLine, boolean done) {
-        super(description, done);
+    public Deadline(String description, LocalDateTime deadLine, boolean isDone) {
+        super(description, isDone);
         this.deadLine = deadLine;
     }
 
@@ -44,7 +44,7 @@ public class Deadline extends Task {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy, E, h:mm a");
         String s = "";
-        if (done) {
+        if (isDone) {
             s = s + "[D][O]";
         } else {
             s = s + "[D][ ]";
@@ -62,7 +62,7 @@ public class Deadline extends Task {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String s = "D | ";
 
-        if (done) {
+        if (isDone) {
             s = s + "1 | ";
         } else {
             s = s + "0 | ";

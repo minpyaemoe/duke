@@ -1,14 +1,14 @@
 package duke.component;
 
+import duke.exception.DukeException;
 import duke.task.Task;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Class for temporary storage of tasks in the program.
  */
 public class TaskList {
-    private List<Task> taskList;
+    private ArrayList<Task> taskList;
 
     /**
      * Constructor for empty TaskList object.
@@ -20,7 +20,7 @@ public class TaskList {
     /**
      * Constructor for TaskList object loaded with tasks from hard disk.
      */
-    public TaskList(List<Task> taskList) {
+    public TaskList(ArrayList<Task> taskList) {
         this.taskList = taskList;
     }
 
@@ -70,6 +70,17 @@ public class TaskList {
      */
     public void replace(int index, Task newTask) {
         this.taskList.set(index, newTask.changeToCompletedStatus());
+    }
+
+    /**
+     * Removes all the tasks in the current list and adds all the tasks from the input task list.
+     * @param newTaskList the task list whose tasks are to be appended.
+     */
+    public void replaceAll(TaskList newTaskList) {
+        taskList.clear();
+        for (Task t : newTaskList.taskList) {
+            this.taskList.add(t);
+        }
     }
 
     /**

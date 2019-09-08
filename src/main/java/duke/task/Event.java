@@ -20,10 +20,10 @@ public class Event extends Task {
      * Constructor for Event Object with certain done status.
      * @param description the description of the event.
      * @param time  the time of the event.
-     * @param done the status of the event.
+     * @param isDone the status of the event.
      */
-    public Event(String description, LocalDateTime time, boolean done) {
-        super(description, done);
+    public Event(String description, LocalDateTime time, boolean isDone) {
+        super(description, isDone);
         this.time = time;
     }
 
@@ -46,7 +46,7 @@ public class Event extends Task {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy, E, h:mm a");
         String s = "";
-        if (done) {
+        if (isDone) {
             s = s + "[E][O]";
         } else {
             s = s + "[E][ ]";
@@ -65,7 +65,7 @@ public class Event extends Task {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String s = "E | ";
 
-        if (done) {
+        if (isDone) {
             s = s + "1 | ";
         } else {
             s = s + "0 | ";

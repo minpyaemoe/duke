@@ -14,8 +14,8 @@ public class Todo extends Task {
      * Constructor for Todo object with certain done status.
      * @param description the description of the task.
      */
-    public Todo(String description, boolean done) {
-        super(description, done);
+    public Todo(String description, boolean isDone) {
+        super(description, isDone);
     }
 
     /**
@@ -34,7 +34,7 @@ public class Todo extends Task {
     @Override
     public String toString() {
         String s = "";
-        if (done) {
+        if (isDone) {
             s = s + "[T][O]";
         } else {
             s = s + "[T][ ]";
@@ -50,7 +50,7 @@ public class Todo extends Task {
     public String toIndicationInsideFile() {
         String s = "T | ";
 
-        if (done) {
+        if (isDone) {
             s = s + "1 | ";
         } else {
             s = s + "0 | ";

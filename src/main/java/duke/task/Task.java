@@ -2,7 +2,7 @@ package duke.task;
 
 public class Task {
     protected String description;
-    protected boolean done;
+    protected boolean isDone;
 
     /**
      * Constructor for Task object with default done status.
@@ -10,17 +10,17 @@ public class Task {
      */
     public Task(String description) {
         this.description = description;
-        this.done = false;
+        this.isDone = false;
     }
 
     /**
      * Constructor for Task object with certain done status.
      * @param description description of the task.
-     * @param done status of the task.
+     * @param isDone status of the task.
      */
-    protected Task(String description, boolean done) {
+    protected Task(String description, boolean isDone) {
         this.description = description;
-        this.done = done;
+        this.isDone = isDone;
     }
 
     /**
@@ -28,7 +28,7 @@ public class Task {
      * @return the boolean status of a task if it is completed.
      */
     public boolean isCompleted() {
-        return done;
+        return isDone;
     }
 
     /**
@@ -54,7 +54,7 @@ public class Task {
     public String toIndicationInsideFile() {
         String s = "T | ";
 
-        if (done) {
+        if (isDone) {
             s = s + "1 | ";
         } else {
             s = s + "0 | ";
