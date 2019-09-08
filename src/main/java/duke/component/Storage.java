@@ -60,35 +60,36 @@ public class Storage {
 
         while (txtSC.hasNext()) {
             String[] historicalInputs = Parser.breakDownString(txtSC.nextLine(), "\\|");
-            boolean taskIsCompleted;
+            boolean isCompleted;
             Task oldTask = null;
 
             if (historicalInputs[1].charAt(1) == '1') {
-                taskIsCompleted = true;
+                isCompleted = true;
             } else {
-                taskIsCompleted = false;
+                isCompleted = false;
             }
 
             switch (historicalInputs[0].charAt(0)) {
             case 'T':
-                oldTask = new Todo(historicalInputs[2].substring(1), taskIsCompleted);
+                oldTask = new Todo(historicalInputs[2].substring(1), isCompleted);
                 break;
             case 'D':
                 String[] time = historicalInputs[3].substring(1).split(" ");
                 oldTask = new Deadline(
                         historicalInputs[2].substring(1, historicalInputs[2].length() - 1),
                         Parser.getDateAndTimeFromString(historicalInputs[3].substring(1)),
-                        taskIsCompleted);
+                        isCompleted);
                 break;
             case 'E':
                 oldTask = new Event(
                         historicalInputs[2].substring(1, historicalInputs[2].length() - 1),
                         Parser.getDateAndTimeFromString(historicalInputs[3].substring(1)),
-                        taskIsCompleted);
+                        isCompleted);
                 break;
             default:
             }
 
+            assert oldTask != null : "Old tasks from files should not be null at this point";
             taskList.add(oldTask);
         }
 

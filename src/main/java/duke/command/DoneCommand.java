@@ -43,8 +43,6 @@ public class DoneCommand extends Command {
 
         taskList.replace(index, taskList.getAtIndex(index).changeToCompletedStatus());
 
-
-
         storage.save(taskList);
 
         return GuiResponse.getDoneAcknowledgement(taskList.getAtIndex(index));
