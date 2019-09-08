@@ -1,12 +1,13 @@
 package duke.component;
 
-import duke.command.DeleteCommand;
-import duke.command.FindCommand;
-import duke.command.ViewListCommand;
-import duke.command.ExitCommand;
-import duke.command.DoneCommand;
 import duke.command.AddCommand;
 import duke.command.Command;
+import duke.command.DeleteCommand;
+import duke.command.DoneCommand;
+import duke.command.ExitCommand;
+import duke.command.FindCommand;
+import duke.command.UndoCommand;
+import duke.command.ViewListCommand;
 
 import duke.exception.DukeException;
 import duke.exception.InvalidCommandException;
@@ -162,6 +163,8 @@ public class Parser {
                 throw new NotEnoughArgumentException("The keyword cannot be empty.");
             }
             return new FindCommand(inputs[1]);
+        } else if (inputs[0].equals("undo")) {
+            return new UndoCommand();
         } else {
             throw new InvalidCommandException("I'm sorry, but I don't know what that means :-(");
         }

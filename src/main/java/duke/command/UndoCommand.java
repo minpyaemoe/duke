@@ -4,7 +4,10 @@ import duke.component.GuiResponse;
 import duke.component.Storage;
 import duke.component.TaskList;
 import duke.component.Ui;
+import duke.task.Task;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 /**
@@ -19,12 +22,20 @@ public class UndoCommand extends Command {
      * @param ui ui for user interaction.
      * @param historicalTaskLists storage for previous version of Task List for undo
      * @return boolean indication of successful or unsuccessful running of command.
+     * @throws FileNotFoundException when textfile cannot be found.
+     * @throws UnsupportedEncodingException when error occurs while writing to hard disk.
      */
     @Override
-    public String executeCommand(TaskList taskList, Storage storage, Ui ui, List<TaskList> historicalTaskLists) {
+    public String executeCommand(TaskList taskList, Storage storage, Ui ui, List<TaskList> historicalTaskLists)
+            throws FileNotFoundException, UnsupportedEncodingException {
+        if (historicalTaskLists.size() > 0) {
+            taskList.replaceAll(historicalTaskLists.remove(historicalTaskLists.size() - 1));
+            storage.save(taskList);
+            return GuiResponse.getSuccessfulUndoAcknowledgement(taskList);
+        } else {
+            return GuiResponse.getUnableToUndoMessage();
+        }
 
-        TaskList previousVersionOfTaskList = historicalTaskLists.remove(0);
 
-        return GuiResponse.getTaskListInString(taskList);
     }
 }

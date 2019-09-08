@@ -59,4 +59,13 @@ public class GuiResponse {
         return "\nHere are the matching tasks in your list:" + "\n" + taskList.toString();
     }
 
+    public static String getUnableToUndoMessage() {
+        return "\nSorry! Unable to undo anymore. :(";
+    }
+
+    public static String getSuccessfulUndoAcknowledgement(TaskList taskList) {
+        return "You have just undid your previous action!"
+                + "\nHere are the tasks in your list:" + "\n" + taskList.toString();
+    }
+
 }

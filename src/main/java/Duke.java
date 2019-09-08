@@ -28,7 +28,7 @@ public class Duke {
             storage = new Storage(System.getProperty("user.dir"));
             ui.showWelcomeScreen();
             taskList = new TaskList(storage.load());
-            historicalTaskLists = new ArrayList<>(4);
+            historicalTaskLists = new ArrayList<>();
         } catch (Exception e) {
             Ui.printErrorMessage(e);
             return;

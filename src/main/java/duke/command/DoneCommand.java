@@ -44,6 +44,10 @@ public class DoneCommand extends Command {
             throw new InvalidIndexException("Invalid task number!");
         }
 
+        TaskList record = new TaskList();
+        record.replaceAll(taskList);
+        historicalTaskLists.add(record);
+
         taskList.replace(index, taskList.getAtIndex(index).changeToCompletedStatus());
 
         storage.save(taskList);
