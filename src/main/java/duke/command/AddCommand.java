@@ -39,6 +39,7 @@ public class AddCommand extends Command {
             throws IOException {
 
         assert newTask != null : "A new task being added should not be a null object.";
+      
         TaskList record = new TaskList();
         record.replaceAll(taskList);
         historicalTaskLists.add(record);

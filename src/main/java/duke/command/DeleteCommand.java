@@ -44,7 +44,6 @@ public class DeleteCommand extends Command {
             throw new InvalidIndexException("Invalid task number!");
         }
 
-
         TaskList record = new TaskList();
         record.replaceAll(taskList);
 

@@ -47,7 +47,7 @@ public class DoneCommand extends Command {
         TaskList record = new TaskList();
         record.replaceAll(taskList);
         historicalTaskLists.add(record);
-
+      
         taskList.replace(index, taskList.getAtIndex(index).changeToCompletedStatus());
 
         storage.save(taskList);
