@@ -48,7 +48,6 @@ public class DeleteCommand extends Command {
         record.replaceAll(taskList);
 
         historicalTaskLists.add(record);
-
         Task deletedTask = taskList.deleteAt(index);
         storage.save(taskList);
 
